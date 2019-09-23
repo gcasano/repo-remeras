@@ -1,0 +1,84 @@
+body{
+  background-color: #E0DFDE;
+}
+ul.navbar{
+  margin-bottom: 0px;
+}
+ul.navbar li{
+  list-style: none;
+}
+ul.navbar li a{
+  color: grey;
+}
+nav.navbar.navbar-dark.bg-dark{
+  width: 100%;
+}
+.navbar-dark .navbar-toggler{
+  border-top: 0px solid black;
+  border-bottom: 0px solid black;
+  border-left: 0px solid black;
+  border-right: 0px solid black;
+  margin: 0 auto;
+}
+div.contenedor{
+  width: 100%;
+}
+div.logo{
+  float: left;
+  position: relative;
+  left: 15%;
+  top: 60px;
+}
+iframe{
+  display: none;
+}
+div.logo h3, div.logo p{
+  color: grey;
+}
+h2{
+  margin-top: 10px;
+}
+p.coment,p.coment2, h2{
+  text-align: center;
+  color: grey;
+}
+p.coment2{
+  padding-bottom: 30px;
+  border-bottom: 1px solid grey;
+}
+div.cuerpo{
+  margin-bottom: 30px;
+  height: 500px;
+  overflow: hidden;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+  div.cuerpo{
+    height: 680px;
+  }
+}
+@media only screen and (min-width: 1024px){
+  div.info{
+    width: 100%;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+  }
+  div.contenedor{
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  p.coment2{
+    border-bottom:;
+  }
+
+  iframe{
+    display: block;
+    margin-top: 30px;
+    position: relative;
+    left: 35%;
+  }
+  .navbar-dark .navbar-toggler{
+    position: relative;
+    right: 47%;
+  }
+}
