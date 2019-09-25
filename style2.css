@@ -1,0 +1,18 @@
+@media only screen and (max-width: 768px) {
+  .position-relative{
+    position: relative!important;
+    float: left;
+  }
+  body{
+    background-color: #E0DFDE;
+  }
+}
+@media only screen and (min-width: 600px){
+  .position-relative{
+    position: relative!important;
+    float: left;
+  }
+  body{
+    background-color: #E0DFDE;
+  }
+}
