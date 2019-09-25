@@ -1,0 +1,270 @@
+
+body{
+  background-color: #E0DFDE ;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .botones{
+  width: 100%;
+  float: left;
+  }
+
+  a{
+  color: white;
+  }
+
+  .dropdown{
+    width: 100%;
+    margin-bottom: 1%;
+  }
+
+.btn-group-vertical{
+  width: 100%;
+}
+
+  .card{
+  float: left;
+  padding: 10px;
+  width: 100%;
+  margin-top: 2%;
+  }
+
+
+  .special{
+    /*Contenedor hijo de .photo-conteiner*/
+    position: absolute;
+    top: 0px;
+    right: 10px;
+  }
+
+
+  .position-relative{
+    position: relative!important;
+    float: left;
+  }
+
+}
+
+
+
+    /* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 600px) {
+
+  .botones{
+  width: 100%;
+  float: left;
+  }
+  .dropdown{
+    float: left;
+    width: 49%;
+    margin-bottom: 1%;
+  }
+
+  .btn-group-vertical{
+    width: 100%;
+  }
+
+  .card{
+  float: left;
+  padding: 10px;
+  width: 46%;
+  margin: 2%;
+  }
+
+  .dropdown-toggle{
+    width: 100%;
+    margin-bottom: 1%;
+  }
+
+
+
+  .special{
+    /*Contenedor hijo de .photo-conteiner*/
+    position: absolute;
+    top: 0px;
+    right: 10px;
+  }
+  .position-relative{
+    position: relative!important;
+    float: left;
+  }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (max-width: 768px) {
+
+  .card{
+  float: left;
+  padding: 10px;
+  width: 100%;
+  }
+
+  .dropdown{
+    width: 100%;
+    margin-bottom: 1%;
+  }
+
+  .special{
+    /*Contenedor hijo de .photo-conteiner*/
+    position: absolute;
+    top: 0px;
+    right: 10px;
+  }
+
+  .dropdown-toggle{
+    width: 100%;
+    margin-bottom: 1%;
+  }
+  .position-relative{
+    position: relative!important;
+    float: left;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+  .card{
+  float: left;
+  padding: 10px;
+  width: 30%;
+  margin: 1%;
+  }
+
+  .dropdown{
+      float: left;
+    width: 31%;
+    margin-bottom: 1%;
+  }
+
+
+  .dropdown-toggle{
+    width: 100%;
+    margin-bottom: 1%;
+  }
+
+
+
+  .special{
+    /*Contenedor hijo de .photo-conteiner*/
+    position: absolute;
+    top: 0px;
+    right: 10px;
+  }
+
+
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+footer  ul.navbar{
+    margin-bottom: 0px;
+  }
+footer  ul.navbar li{
+    list-style: none;
+  }
+
+
+
+/* #E0DFDE*/
+
+
+
+
+
+  .navbar navbar-dark bg-dark{
+    position: fixed;
+  }
+
+
+
+  .contenedor{
+  border-bottom: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+  width: 100%;
+  }
+
+
+.dropdown{
+  width: 100%;
+}
+
+  .botones{
+ margin-top: 10px;
+  width: 18%;
+  float: left;
+  position: fixed;
+  }
+
+.position-relative{
+  position: relative;
+  left: 20%;
+  width: 80%;
+  float: left;
+  overflow: hidden;
+}
+  .formato{
+
+width: 10%;
+margin-left: 1%;
+  }
+
+
+  .special{
+    /*Contenedor hijo de .photo-conteiner*/
+    position: absolute;
+    top: 0px;
+    right: 10px;
+  }
+
+.container-fluid{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+  .list-group{
+    width: 90%;
+  }
+
+
+  .foto{
+  position: relative;
+  left: 20%;
+
+  width: 80%;
+  float: left;
+  overflow: hidden;
+  }
+
+.dropdown-toggle{
+  width: 100%;
+  margin-bottom: 1%;
+}
+
+
+  .rounded-lg{
+    height: 400px;
+    width: 260px;
+  }
+
+
+  .card{
+  float: left;
+  padding: 10px;
+  width: 23%;
+  }
+
+
+  .fas fa-cart-plus{
+
+  }
+
+
+}
