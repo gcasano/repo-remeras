@@ -1,0 +1,150 @@
+ul.navbar li a{
+  color: white;
+  font-size: 13px;
+}
+ul.nav li a{
+  color: white;
+}
+.pos-f-t{
+  position: relative;
+  display:block;
+}
+.cabeza{
+  position: relative;
+  display: none;
+}
+body{
+  background-color: #E0DFDE;
+}
+ul.navbar{
+  margin-bottom: 0px;
+}
+
+ul.navbar li{
+  list-style: none;
+}
+
+nav.navbar.navbar-dark.bg-dark{
+  width: 100%;
+}
+.navbar-dark .navbar-toggler{
+  border-top: 0px solid black;
+  border-bottom: 0px solid black;
+  border-left: 0px solid black;
+  border-right: 0px solid black;
+  margin: 0 auto;
+}
+div.contenedor{
+  width: 100%;
+  height: 800px;
+}
+div.cuerpo{
+  margin-bottom: 30px;
+  height: 760px;
+  overflow: hidden;
+}
+div.logo{
+  position: relative;
+  top: 60px;
+}
+div.logo img{
+  width: 375px;
+  height: 375px;
+}
+div.usuario{
+  position: relative;
+  margin-top: 65px;
+
+}
+div.usuario h5, div.usuario label{
+  position: relative;
+  top: 25px;
+  width: 50%;
+  margin: 0 auto;
+  left: 2%;
+  color: grey;
+}
+h2{
+  margin-top: 10px;
+  text-align: center;
+  color: grey;
+}
+p.coment2{
+  padding-bottom: 30px;
+  border-bottom: 1px solid grey;
+}
+@media (min-width: 768px) and (max-width: 1024px){
+  div.logo{
+    position: relative;
+    top: 60px;
+    width: 50%;
+    margin: 0 auto;
+  }
+  div.usuario{
+    margin-top: 100px;
+
+  }
+  div.contenedor{
+    height: 880px;
+  }
+}
+
+@media (min-width: 1025px){
+  .pos-f-t{
+
+    display:none;
+  }
+  .cabeza{
+
+    display: block;
+  }
+  div.info{
+    width: 100%;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+  }
+  div.contenedor{
+    width: 100%;
+    height: 600px;
+    margin-bottom: 30px;
+  }
+  div.cuerpo{
+    margin-bottom: 30px;
+    height: 560px;
+  }
+  p.coment2{
+    border-bottom:;
+  }
+  div.logo{
+    position: relative;
+    float: left;
+    left: 15%;
+    top: 60px;
+  }
+  div.usuario h5, div.usuario label{
+    position: relative;
+    top: 25px;
+    width: 50%;
+    margin: 0 auto;
+    left: 20%;
+    color: grey;
+  }
+  div.usuario h5{
+    margin-bottom: 50px;
+  }
+
+  div.logo img{
+    width: 400px;
+    height: 400px;
+  }
+  div.usuario{
+    margin-top: 30px;
+    position: relative;
+    left: 15%;
+  }
+  .navbar-dark .navbar-toggler{
+    position: relative;
+    right: 47%;
+  }
+}
