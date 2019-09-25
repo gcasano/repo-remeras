@@ -1,3 +1,14 @@
+ul.nav li a{
+  color: white;
+}
+.pos-f-t{
+  position: relative;
+  display:block;
+}
+.cabeza{
+  position: relative;
+  display: none;
+}
 body{
   background-color: #E0DFDE;
 }
@@ -8,7 +19,8 @@ ul.navbar li{
   list-style: none;
 }
 ul.navbar li a{
-  color: grey;
+  color: white;
+  font-size: 13px;
 }
 nav.navbar.navbar-dark.bg-dark{
   width: 100%;
@@ -57,6 +69,14 @@ div.cuerpo{
   }
 }
 @media only screen and (min-width: 1024px){
+  .pos-f-t{
+
+    display:none;
+  }
+  .cabeza{
+
+    display: block;
+  }
   div.info{
     width: 100%;
     margin-top: 30px;
@@ -65,7 +85,8 @@ div.cuerpo{
   }
   div.contenedor{
     width: 100%;
-    margin-bottom: 30px;
+    height: 600px;
+
   }
   p.coment2{
     border-bottom:;
@@ -80,9 +101,5 @@ div.cuerpo{
   .navbar-dark .navbar-toggler{
     position: relative;
     right: 47%;
-  }
-
-  a {
-      color: white;
   }
 }

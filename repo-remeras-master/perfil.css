@@ -1,15 +1,29 @@
+ul.navbar li a{
+  color: white;
+  font-size: 13px;
+}
+ul.nav li a{
+  color: white;
+}
+.pos-f-t{
+  position: relative;
+  display:block;
+}
+.cabeza{
+  position: relative;
+  display: none;
+}
 body{
   background-color: #E0DFDE;
 }
 ul.navbar{
   margin-bottom: 0px;
 }
+
 ul.navbar li{
   list-style: none;
 }
-ul.navbar li a{
-  color: grey;
-}
+
 nav.navbar.navbar-dark.bg-dark{
   width: 100%;
 }
@@ -76,6 +90,14 @@ p.coment2{
 }
 
 @media (min-width: 1025px){
+  .pos-f-t{
+
+    display:none;
+  }
+  .cabeza{
+
+    display: block;
+  }
   div.info{
     width: 100%;
     margin-top: 30px;

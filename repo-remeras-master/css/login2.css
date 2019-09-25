@@ -1,13 +1,39 @@
+ul.navbar li a{
+  color: white;
+  font-size: 13px;
+}
+ul.nav li a{
+  color: white;
+}
 
+.pos-f-t{
+  position: relative;
+  display:block;
+}
+.cabeza{
+  position: relative;
+  display: none;
+}
 body{
   background-color: #E0DFDE;
 }
-
-
-a{
-color: white;
+ul.navbar{
+  margin-bottom: 0px;
+}
+ul.navbar li{
+  list-style: none;
 }
 
+nav.navbar.navbar-dark.bg-dark{
+  width: 100%;
+}
+.navbar-dark .navbar-toggler{
+  border-top: 0px solid black;
+  border-bottom: 0px solid black;
+  border-left: 0px solid black;
+  border-right: 0px solid black;
+  margin: 0 auto;
+}
 p.email,p.password{
 }
 div.contenedor{
@@ -31,8 +57,6 @@ form{
   width: 50%;
   margin: 0 auto;
 }
-
-
 p.email, p.password{
   margin-bottom: 20px;
 }
@@ -61,13 +85,16 @@ p.coment2{
   div.contenedor{
     height: 880px;
   }
-  header.cabeza{
-    position: relative;
-    display: none;
-  }
 }
 @media only screen and (min-width: 1024px){
+  .pos-f-t{
 
+    display:none;
+  }
+  .cabeza{
+
+    display: block;
+  }
   div.info{
     width: 100%;
     margin-top: 30px;
@@ -101,9 +128,7 @@ p.coment2{
   div.logo h3, div.logo p{
     color: grey;
   }
-
-
-form{
+  form{
     width: 30%;
     margin-top: 30px;
     position: relative;
@@ -118,21 +143,4 @@ form{
     position: relative;
     right: 47%;
   }
-
-  .form-inline {
-    display: none;
-    flex-flow: row wrap;
-    align-items: center; // Prevent shorter elements from growing to same height as others (e.g., small buttons growing to normal sized button height)
-
-    // Because we use flex, the initial sizing of checkboxes is collapsed and
-    // doesn't occupy the full-width (which is what we want for xs grid tier),
-    // so we force that here.
-    .form-check {
-      width: 100%;
-    }
-    .nav-link {
-        color: white;
-    }
-
-
 }

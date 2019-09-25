@@ -25,6 +25,7 @@
   <main class="contenedor">
 
 <?php include("header.php"); ?>
+<?php include("header2.php"); ?>
 
   <nav class="botones">
 

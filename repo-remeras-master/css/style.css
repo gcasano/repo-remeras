@@ -2,9 +2,33 @@
 body{
   background-color: #E0DFDE ;
 }
-
+header.cabeza{
+  position: relative;
+  display: none;
+}
+header.cabeza2{
+  position: relative;
+  display: none;
+}
+div.info{
+  height: 1000px;
+}
+ul.navbar li a{
+  color: white;
+  font-size: 13px;
+}
+a{
+color: white;
+}
+li{
+  list-style: none;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  header.cabeza2{
+    display: block;
+  }
+
   .botones{
   width: 100%;
   float: left;
@@ -94,8 +118,10 @@ body{
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 
-@media only screen and (max-width: 768px) {
-
+@media only screen and (max-width: 992px) {
+  header.cabeza2{
+    display: block;
+  }
   .card{
   float: left;
   padding: 10px;
@@ -126,7 +152,9 @@ body{
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
+  header.cabeza{
+    display: block;
+  }
   .card{
   float: left;
   padding: 10px;
@@ -161,6 +189,9 @@ body{
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+  header.cabeza{
+    display: block;
+  }
 
 footer  ul.navbar{
     margin-bottom: 0px;
@@ -168,6 +199,7 @@ footer  ul.navbar{
 footer  ul.navbar li{
     list-style: none;
   }
+
 
 
 
