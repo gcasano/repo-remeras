@@ -1,13 +1,41 @@
 
-
-
-
-
+body{
+  background-color: #E0DFDE ;
+}
+header.cabeza{
+  position: relative;
+  display: none;
+}
+header.cabeza2{
+  position: relative;
+  display: none;
+}
+div.info{
+  height: 1000px;
+}
+ul.navbar li a{
+  color: white;
+  font-size: 13px;
+}
+a{
+color: white;
+}
+li{
+  list-style: none;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  header.cabeza2{
+    display: block;
+  }
+
   .botones{
   width: 100%;
   float: left;
+  }
+
+  a{
+  color: white;
   }
 
   .dropdown{
@@ -35,6 +63,10 @@
   }
 
 
+  .position-relative{
+    position: relative!important;
+    float: left;
+  }
 
 }
 
@@ -77,12 +109,19 @@
     top: 0px;
     right: 10px;
   }
+  .position-relative{
+    position: relative!important;
+    float: left;
+  }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 
-@media only screen and (max-width: 768px) {
-
+@media only screen and (max-width: 992px) {
+  header.cabeza2{
+    display: block;
+  }
   .card{
   float: left;
   padding: 10px;
@@ -105,12 +144,17 @@
     width: 100%;
     margin-bottom: 1%;
   }
-
+  .position-relative{
+    position: relative!important;
+    float: left;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-
+  header.cabeza{
+    display: block;
+  }
   .card{
   float: left;
   padding: 10px;
@@ -138,18 +182,31 @@
     top: 0px;
     right: 10px;
   }
+
+
 }
+
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
-body{
-  background-color: #E0DFDE;
-}
-
-  .nav-link{
-  color: white;
+  header.cabeza{
+    display: block;
   }
+
+footer  ul.navbar{
+    margin-bottom: 0px;
+  }
+footer  ul.navbar li{
+    list-style: none;
+  }
+
+
+
+
+/* #E0DFDE*/
+
+
+
 
 
   .navbar navbar-dark bg-dark{
@@ -212,6 +269,7 @@ margin-left: 1%;
   .foto{
   position: relative;
   left: 20%;
+
   width: 80%;
   float: left;
   overflow: hidden;

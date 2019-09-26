@@ -7,16 +7,52 @@
 <script src="https://kit.fontawesome.com/11b69fdd61.js" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="css/style.css">
+
+
     <title>Ropa</title>
   </head>
 
 
   <body>
 
+  <header class="cabeza">
+      <img src="img/descarga.png" class="img-fluid" alt="Responsive image">
+          <nav class="navbar navbar-dark bg-dark">
+            <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="home.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"  href="FQP.php">Preguntas Frecuentes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"  href="registro.php">Registro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"  href="login.php">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"  href="contacto.php">Contactos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"  href="perfil.php">Mi Perfil</a>
+            </li>
+          </ul>
+
+  <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  <!-- Navbar content -->
+        </nav>
+
+
+  </header>
+<?php include 'header2.php'; ?>
 <div>
   <main class="contenedor">
 
-<?php include("header.php"); ?>
+
 
   <nav class="botones">
 
@@ -123,7 +159,7 @@
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href= "http://localhost/Proyecto/funciones.php?value=img/remeraa1.jpg" class="btn btn-primary">ver más</a>
+              <a href= "funciones.php?value=img/remeraa1.jpg" class="btn btn-primary">ver más</a>
               <i class="fas fa-cart-plus"></i>
             </div>
             </div>
@@ -134,7 +170,7 @@
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="http://localhost/Proyecto/funciones.php?value=img/remerab1.jpg" class="btn btn-primary">ver más</a>
+            <a href="funciones.php?value=img/remerab1.jpg" class="btn btn-primary">ver más</a>
             <i class="fas fa-cart-plus"></i>
           </div>
           </div>
@@ -144,7 +180,7 @@
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="http://localhost/Proyecto/funciones.php?value=img/remerac1.jpg" class="btn btn-primary">ver más</a>
+            <a href="funciones.php?value=img/remerac1.jpg" class="btn btn-primary">ver más</a>
             <i class="fas fa-cart-plus"></i>
           </div>
           </div>
@@ -155,7 +191,7 @@
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="http://localhost/Proyecto/funciones.php?value=img/remerad1.jpg" class="btn btn-primary">ver más</a>
+            <a href="funciones.php?value=img/remerad1.jpg" class="btn btn-primary">ver más</a>
             <i class="fas fa-cart-plus"></i>
           </div>
           </div>
@@ -166,7 +202,7 @@
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="http://localhost/Proyecto/funciones.php?value=img/remerae1.jpg" class="btn btn-primary">ver más</a>
+            <a href="funciones.php?value=img/remerae1.jpg" class="btn btn-primary">ver más</a>
             <i class="fas fa-cart-plus"></i>
           </div>
           </div>
@@ -176,7 +212,7 @@
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="http://localhost/Proyecto/funciones.php?value=img/remeraf1.jpg" class="btn btn-primary">ver más</a>
+            <a href="funciones.php?value=img/remeraf1.jpg" class="btn btn-primary">ver más</a>
             <i class="fas fa-cart-plus"></i>
           </div>
           </div>
@@ -186,7 +222,7 @@
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="http://localhost/Proyecto/funciones.php?value=img/remerag1.jpg" class="btn btn-primary">ver más</a>
+            <a href="funciones.php?value=img/remerag1.jpg" class="btn btn-primary">ver más</a>
             <i class="fas fa-cart-plus"></i>
           </div>
           </div>
@@ -197,7 +233,7 @@
           <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="http://localhost/Proyecto/funciones.php?value=img/remerah1.jpg" class="btn btn-primary">ver más</a>
+            <a href="funciones.php?value=img/remerah1.jpg" class="btn btn-primary">ver más</a>
             <i class="fas fa-cart-plus"></i>
           </div>
           </div>
@@ -205,15 +241,7 @@
 </div>
 </main>
 
-<footer>
-
-
-</footer>
-
-
-
-
-
+<?php include 'footer.php'; ?>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

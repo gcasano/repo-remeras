@@ -5,6 +5,7 @@ ul.navbar li a{
 ul.nav li a{
   color: white;
 }
+
 .pos-f-t{
   position: relative;
   display:block;
@@ -19,7 +20,6 @@ body{
 ul.navbar{
   margin-bottom: 0px;
 }
-
 ul.navbar li{
   list-style: none;
 }
@@ -34,62 +34,59 @@ nav.navbar.navbar-dark.bg-dark{
   border-right: 0px solid black;
   margin: 0 auto;
 }
+p.email,p.password{
+}
 div.contenedor{
   width: 100%;
-  height: 800px;
+  height: 660px;
 }
-div.cuerpo{
-  margin-bottom: 30px;
-  height: 760px;
-  overflow: hidden;
+input#email, input#password , input#nombre, input#passwordConfirm{
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  border-radius: 7px;
+  width: 100%;
 }
 div.logo{
-  position: relative;
-  top: 60px;
+  display: none;
 }
-div.logo img{
-  width: 375px;
-  height: 375px;
-}
-div.usuario{
-  position: relative;
-  margin-top: 65px;
-
-}
-div.usuario h5, div.usuario label{
+form{
   position: relative;
   top: 25px;
   width: 50%;
   margin: 0 auto;
-  left: 2%;
-  color: grey;
+}
+p.email, p.password{
+  margin-bottom: 20px;
 }
 h2{
   margin-top: 10px;
+}
+p.coment,p.coment2, h2{
   text-align: center;
   color: grey;
+}
+input.boton{
+  width: 100%;
+  border-top: solid 1px grey;
+  border-bottom: solid 1px grey;
+  border-left: solid 1px grey;
+  border-right: solid 1px grey;
+  background-color: rgba(0,0,0,0.1);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 p.coment2{
   padding-bottom: 30px;
   border-bottom: 1px solid grey;
 }
 @media (min-width: 768px) and (max-width: 1024px){
-  div.logo{
-    position: relative;
-    top: 60px;
-    width: 50%;
-    margin: 0 auto;
-  }
-  div.usuario{
-    margin-top: 100px;
-
-  }
   div.contenedor{
     height: 880px;
   }
 }
-
-@media (min-width: 1025px){
+@media only screen and (min-width: 1024px){
   .pos-f-t{
 
     display:none;
@@ -109,39 +106,38 @@ p.coment2{
     height: 600px;
     margin-bottom: 30px;
   }
-  div.cuerpo{
-    margin-bottom: 30px;
-    height: 560px;
-  }
   p.coment2{
     border-bottom:;
   }
+  div.cuerpo{
+    margin-bottom: 30px;
+    height: 500px;
+    overflow: hidden;
+  }
   div.logo{
-    position: relative;
+    display: block;
     float: left;
+    position: relative;
     left: 15%;
     top: 60px;
   }
-  div.usuario h5, div.usuario label{
-    position: relative;
-    top: 25px;
-    width: 50%;
-    margin: 0 auto;
-    left: 20%;
+  div.logo img{
+    width: 300px;
+    height: 300px;
+  }
+  div.logo h3, div.logo p{
     color: grey;
   }
-  div.usuario h5{
-    margin-bottom: 50px;
-  }
-
-  div.logo img{
-    width: 400px;
-    height: 400px;
-  }
-  div.usuario{
+  form{
+    width: 30%;
     margin-top: 30px;
     position: relative;
-    left: 15%;
+    left: 20%;
+  }
+  iframe{
+    margin-top: 30px;
+    position: relative;
+    left: 35%;
   }
   .navbar-dark .navbar-toggler{
     position: relative;
