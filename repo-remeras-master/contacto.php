@@ -10,7 +10,6 @@
   <?php include 'header.php'; ?>
   <?php include 'header2.php'; ?>
   <body>
-    <div class="contenedor">
       <div class="info">
         <h2>Contacto</h2>
         <p class="coment">puedes venir a a vernos a nuestro local</p>
