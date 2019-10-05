@@ -1,3 +1,13 @@
+<?php
+  $baseDatos = file_get_contents("usuarios.json");
+  $arrayDatos = json_decode($baseDatos, true);
+  foreach ($arrayDatos as $usuario) {
+      echo $usuario["nombre"]."<br>";
+      echo $usuario["email"]."<br>";
+      ?> <img src="img/<?php
+      echo $usuario["email"];?>.jpg" alt="foto perfil" width="100px" height="100px"> <?php
+    }
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

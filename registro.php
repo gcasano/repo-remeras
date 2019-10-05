@@ -1,4 +1,28 @@
+<?php
 
+
+  $baseDatos = file_get_contents("usuarios.json");
+  $arrayDatos = json_decode($baseDatos, true);
+if($_POST){
+  $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+  $hash2 = password_hash($_POST["passwordConfirm"], PASSWORD_DEFAULT);
+  $usuario = [
+          "nombre" => $_POST["name"],
+          "email" => $_POST['email'],
+          "password" => $hash,
+          "passwordConfirm" => $hash2,
+          "imagen" => $_FILES["imagen"]["tmp_name"]
+        ];
+  $arrayDatos[] = $usuario;
+  $baseDatos = json_encode($arrayDatos);
+  file_put_contents("usuarios.json", $baseDatos);
+
+  if($_FILES){
+    var_dump($_FILES);
+    move_uploaded_file($usuario["imagen"], "img/".$usuario["email"].".jpg");
+  }
+}
+?>
 
 
 <!DOCTYPE html>
@@ -23,34 +47,38 @@
         <div class="logo">
           <img src="img/logo_copy.jpg" alt="logo">
         </div>
-        <form class="" action="index.html" method="post">
+        <form class="" action="registro.php" method="post" enctype="multipart/form-data">
           <p class="email">
             <label for="nombre">
               <b>*</b>Nombre
             </label>
             <br>
-            <input id="nombre" type="text" name="" value="" required>
+            <input id="nombre" type="text" name="name" value="" required>
           </p>
           <p class="email">
             <label for="email">
               <b>*</b>Direccion de email
             </label>
             <br>
-            <input id="email" type="email" name="" value="">
+            <input id="email" type="email" name="email" value="">
           </p>
           <p class="password">
             <label for="password">
               <b>*</b>Contrasena
             </label>
             <br>
-            <input id="password" type="password" name="" value="" required>
+            <input id="password" type="password" name="password" value="" required>
           </p>
           <p class="password">
             <label for="passwordConfirm">
               <b>*</b>Confirme su contrasena
             </label>
             <br>
-            <input id="passwordConfirm" type="password" name="" value="" required>
+            <input id="passwordConfirm" type="password" name="passwordConfirm" value="" required>
+          </p>
+          <p>
+            <label for="perfil" >Agrega tu foto de perfil</label><br/>
+            <input type="file" name="imagen" id="perfil" value='' maxlength="50" />
           </p>
           <p>
             <input type="submit" name="" value="registrar" class="boton">
