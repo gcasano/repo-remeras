@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
   $baseDatos = file_get_contents("usuarios.json");
   $arrayDatos = json_decode($baseDatos, true);

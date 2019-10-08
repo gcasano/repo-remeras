@@ -20,6 +20,13 @@
           <li class="nav-item">
             <a class="nav-link active"  href="perfil.php">Mi Perfil</a>
           </li>
+          <li class="nav-item">
+            <?php if (isset($_SESSION["logeado"])): ?>
+            <?php if ($_SESSION["logeado"] == true): ?>
+            <a class="nav-link active" href="#">hola <?php echo $_SESSION["name"]; ?></a>
+            <?php endif; ?>
+            <?php endif; ?>
+          </li>
         </ul>
 
 <!-- <form class="form-inline">
