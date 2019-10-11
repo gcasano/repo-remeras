@@ -1,7 +1,13 @@
 <?php
+
+if($_POST){
+  if (isset($_POST["si"])) {
+    setcookie("recordar", $_POST["email"], time()+60*60);
+  }
+}
 $email = "";
 $password = "";
-if($_POST){
+if($_POST && isset($_POST["email"]) && isset($_POST["pass"])){
   $email = $_POST["email"];
   $password = $_POST["pass"];
 }
@@ -119,7 +125,11 @@ session_start();
                  <b>*</b>Direccion de email
                </label>
                <br>
-               <input id="email" type="email" name="email" value="<?php echo $email ?>" >
+               <input id="email" type="email" name="email" value="<?php if(isset($_COOKIE["recordar"])){
+                   echo $_COOKIE["recordar"];
+                 }else{
+                   echo $email;
+                 } ?>" >
              </p>
              <?php if($_POST){
                if(isset($noEmail)){
@@ -128,6 +138,8 @@ session_start();
                  ?> <p class="error">email no valido</p> <?php
                }
              } ?>
+             <label for="check">recordar email</label>
+             <input type="checkbox" name="si" value="si" id="check">
              <p class="password">
                <label for="password">
                  <b>*</b>Contrasena
@@ -218,7 +230,11 @@ session_start();
                          <b>*</b>Direccion de email
                        </label>
                        <br>
-                       <input id="email" type="email" name="email" value="<?php echo $email ?>" >
+                       <input id="email" type="email" name="email" value="<?php if(isset($_COOKIE["recordar"])){
+                           echo $_COOKIE["recordar"];
+                         }else{
+                           echo $email;
+                         } ?>" >
                      </p>
                      <?php if($_POST){
                        if(isset($noEmail)){
@@ -227,6 +243,8 @@ session_start();
                          ?> <p class="error">email no valido</p> <?php
                        }
                      } ?>
+                     <label for="check">recordar email</label>
+                     <input type="checkbox" name="si" value="si" id="check">
                      <p class="password">
                        <label for="password">
                          <b>*</b>Contrasena
