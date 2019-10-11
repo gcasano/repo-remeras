@@ -23,6 +23,24 @@ session_start();
     }
   }
 
+    if(isset($_POST["olvido"])){
+      setcookie("olvidoPass", true, time()+15);
+    }
+
+    if(isset($_POST["pass2"])){
+      foreach ($arrayDatos as $usuario){
+        if($usuario["email"] == $_POST["email2"]){
+          $usuario["password"] = $_POST["pass2"];
+          $baseDatos = json_encode($arrayDatos);
+          echo $baseDatos;
+          file_put_contents("usuarios.json", $baseDatos);
+        }
+      }
+    }
+
+
+
+
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -44,6 +62,32 @@ session_start();
            <p class="coment">si tienes una cuenta registrada,</p>
            <p class="coment2">ingresa tus datos:</p>
          </div>
+         <?php if(isset($_COOKIE["olvidoPass"])){
+           ?>
+
+           <div class="cuerpo">
+             <form class="" action="login.php" method="post">
+               <label for="email2">ingrese su email</label> <br>
+               <input type="email" name="email2" value="" id="email2"> <br>
+               <input type="submit" name="" value="enviar"> <br>
+               <?php if(isset($_POST["email2"])){
+                 foreach ($arrayDatos as $usuario){
+                   if($usuario["email"] == $_POST["email2"]){
+                     ?>
+                       <form class="" action="login.php" method="post">
+                         <label for="pass2">Cabiar contrasena: </label> <br>
+                         <input type="password" name="pass2" value="" id="pass2"> <br>
+                         <input type="submit" name="" value="cambiar">
+                       </form>
+                     <?php
+                   }
+                 }
+               } ?>
+             </form>
+           </div>
+
+           <?php
+         }else{ ?>
          <div class="cuerpo">
            <div class="logo">
              <img src="img/logo_copy.jpg" alt="logo">
@@ -67,10 +111,18 @@ session_start();
                <input type="submit" name="" value="login" class="boton">
              </p>
            </form>
-         </div>
+           <form class="" action="login.php" method="post">
+             <p>
+               <label for="olvido">olvido su Contrasena? </label>
+               <input type="checkbox" id="olvido" name="olvido" value="olvido">
+               <input type="submit" name="" value="enviar">
+             </p>
+           </form>
+         </div> <?php } ?>
        </div>
 <?php }elseif ($_SESSION["logeado"] == true) {
       ?>
+       <div class="contenedor">
       <div class="info">
         <h2>ya iniciaste secion</h2>
         <p class="coment"></p>
@@ -83,6 +135,7 @@ session_start();
           </p>
         </form>
       </div>
+    </div>
       <?php
     }elseif ($_SESSION["logeado"] == false) {
       ?>       <div class="contenedor">
@@ -91,6 +144,32 @@ session_start();
                  <p class="coment">si tienes una cuenta registrada,</p>
                  <p class="coment2">ingresa tus datos:</p>
                </div>
+               <?php if(isset($_COOKIE["olvidoPass"])){
+                 ?>
+
+                 <div class="cuerpo">
+                   <form class="" action="login.php" method="post">
+                     <label for="email2">ingrese su email</label> <br>
+                     <input type="email" name="email2" value="" id="email2"> <br>
+                     <input type="submit" name="" value="enviar"> <br>
+                     <?php if(isset($_POST["email2"])){
+                       foreach ($arrayDatos as $usuario){
+                         if($usuario["email"] == $_POST["email2"]){
+                           ?>
+                             <form class="" action="login.php" method="post">
+                               <label for="pass2">Cabiar contrasena: </label> <br>
+                               <input type="password" name="pass2" value="" id="pass2"> <br>
+                               <input type="submit" name="" value="cambiar">
+                             </form>
+                           <?php
+                         }
+                       }
+                     } ?>
+                   </form>
+                 </div>
+
+                 <?php
+               }else{ ?>
                <div class="cuerpo">
                  <div class="logo">
                    <img src="img/logo_copy.jpg" alt="logo">
@@ -114,7 +193,16 @@ session_start();
                      <input type="submit" name="" value="login" class="boton">
                    </p>
                  </form>
-               </div>
+                 <form class="" action="login.php" method="post">
+                   <p>
+                     <label for="olvido">olvido su Contrasena? </label>
+                     <input type="checkbox" id="olvido" name="olvido" value="olvido">
+                     <input type="submit" name="" value="enviar">
+                   </p>
+                 </form>
+
+
+               </div> <?php } ?>
              </div><?php
     }
 

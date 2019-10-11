@@ -9,23 +9,32 @@
             <a class="nav-link active"  href="FQP.php">Preguntas Frecuentes</a>
           </li>
           <li class="nav-item">
+            <?php if (isset($_SESSION["logeado"]) && $_SESSION["logeado"] == true) {
+
+            }else{ ?>
             <a class="nav-link active"  href="registro.php">Registro</a>
+          <?php } ?>
           </li>
           <li class="nav-item">
+            <?php if (isset($_SESSION["logeado"]) && $_SESSION["logeado"] == true) {
+
+            }else{ ?>
             <a class="nav-link active"  href="login.php">Login</a>
+          <?php } ?>
           </li>
           <li class="nav-item">
             <a class="nav-link active"  href="contacto.php">Contactos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active"  href="perfil.php">Mi Perfil</a>
-          </li>
-          <li class="nav-item">
-            <?php if (isset($_SESSION["logeado"])): ?>
-            <?php if ($_SESSION["logeado"] == true): ?>
-            <a class="nav-link active" href="#">hola <?php echo $_SESSION["name"]; ?></a>
-            <?php endif; ?>
-            <?php endif; ?>
+            <?php if (isset($_SESSION["logeado"])){
+                    if ($_SESSION["logeado"] == true){ ?>
+                      <a class="nav-link active" href="perfil.php">hola <?php echo $_SESSION["name"]; ?></a>
+              <?php }else {
+                      ?><a class="nav-link active"  href="perfil.php">Mi Perfil</a><?php
+                    }
+                  }else{
+                    ?><a class="nav-link active"  href="perfil.php">Mi Perfil</a><?php
+                  }?>
           </li>
         </ul>
 

@@ -7,10 +7,26 @@
           <ul class="navbar">
             <li><a href="home.php">Home</a></li>
             <li><a href="FQP.php">F.A.Q</a></li>
-            <li><a href="registro.php">Registro</a></li>
-            <li><a href="login.php">Login</a></li>
+            <li><?php if (isset($_SESSION["logeado"]) && $_SESSION["logeado"] == true) {
+
+            }else{ ?>
+            <a  href="registro.php">Registro</a>
+          <?php } ?></li>
+            <li><?php if (isset($_SESSION["logeado"]) && $_SESSION["logeado"] == true) {
+
+            }else{ ?>
+            <a  href="login.php">Login</a>
+          <?php } ?></li>
             <li><a href="contacto.php">Contacto</a></li>
-            <li><a href="perfil.php">Perfil</a></li>
+            <li> <?php if (isset($_SESSION["logeado"])){
+                        if ($_SESSION["logeado"] == true){ ?>
+                            <a href="perfil.php"><?php echo $_SESSION["name"]; ?></a>
+                  <?php }else {
+                                  ?><a href="perfil.php">Perfil</a><?php
+                              }
+                      }else{
+                              ?><a href="perfil.php">Perfil</a><?php
+                            }?></li>
           </ul>
         </span>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

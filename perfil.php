@@ -3,6 +3,14 @@ session_start();
   $baseDatos = file_get_contents("usuarios.json");
   $arrayDatos = json_decode($baseDatos, true);
 
+  if(isset($_SESSION["logeado"])){
+    if($_SESSION["logeado"] == true){
+      if(isset($_POST["logout"])){
+        $_SESSION["logeado"] = false;
+      }
+    }
+  }
+
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -56,6 +64,11 @@ session_start();
               ?>
               <label for="nombre">email:</label>
               <h5><?php echo $usuario["email"]."<br>"; ?></h5>
+              <form class="" action="login.php" method="post">
+                <h5>
+                  <input type="submit" name="logout" value="logout" class="boton">
+                </h5>
+              </form>
               <?php
 
             }

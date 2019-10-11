@@ -1,16 +1,47 @@
 <?php
+$nombre = "";
+$email = "";
+$password = "";
+$passwordConfirm = "";
+
+if($_POST){
+  $nombre = $_POST["name"];
+  $email = $_POST["email"];
+  $password = $_POST["password"];
+  $passwordConfirm = $_POST["passwordConfirm"];
+}
+
+if($_POST){
+  if (strlen($_POST["name"]) == 0) {
+    $noNombre = true;
+  }
+  if (strlen($_POST["email"]) == 0) {
+    $noEmail = true;
+  }
+  if (strlen($_POST["password"]) == 0) {
+    $noPassword = true;
+  }elseif (strlen($_POST["password"]) < 6) {
+    $errorPass = true;
+  }
+  if (strlen($_POST["passwordConfirm"]) == 0) {
+    $noPassConfirm = true;
+  }
+}
+
 session_start();
 
   $baseDatos = file_get_contents("usuarios.json");
   $arrayDatos = json_decode($baseDatos, true);
-if($_POST){
-  $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-  $hash2 = password_hash($_POST["passwordConfirm"], PASSWORD_DEFAULT);
+if($_POST && isset($noNombre) == false && isset($noEmail) == false && isset($noPassword) == false && isset($noPassConfirm) == false && isset($errorPass) == false && isset($noCoincide) == false){
+  if($_POST["password"] == $_POST["passwordConfirm"]){
+    $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+  }else{
+    $noCoincide = true;
+  }
   $usuario = [
           "nombre" => $_POST["name"],
           "email" => $_POST['email'],
           "password" => $hash,
-          "passwordConfirm" => $hash2,
           "imagen" => $_FILES["imagen"]["tmp_name"]
         ];
   $arrayDatos[] = $usuario;
@@ -18,7 +49,6 @@ if($_POST){
   file_put_contents("usuarios.json", $baseDatos);
 
   if($_FILES){
-    var_dump($_FILES);
     move_uploaded_file($usuario["imagen"], "img/".$usuario["email"].".jpg");
   }
 }
@@ -33,6 +63,7 @@ if($_POST){
     <title>Registro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login2.css">
+    <link rel="stylesheet" href="css/login3.css">
   </head>
     <?php include 'header.php'; ?>
     <?php include 'header2.php'; ?>
@@ -53,29 +84,52 @@ if($_POST){
               <b>*</b>Nombre
             </label>
             <br>
-            <input id="nombre" type="text" name="name" value="" required>
+            <input id="nombre" type="text" name="name" value="<?php echo $nombre ?>" >
           </p>
+          <?php if($_POST){
+            if(isset($noNombre)){
+              ?> <p class="error">debe completar su nombre</p> <?php
+            }
+          } ?>
           <p class="email">
             <label for="email">
               <b>*</b>Direccion de email
             </label>
             <br>
-            <input id="email" type="email" name="email" value="">
+            <input id="email" type="email" name="email" value="<?php echo $email ?>" >
           </p>
+          <?php if($_POST){
+            if(isset($noEmail)){
+              ?> <p class="error">debe completar su email</p> <?php
+            }
+          } ?>
           <p class="password">
             <label for="password">
               <b>*</b>Contrasena
             </label>
             <br>
-            <input id="password" type="password" name="password" value="" required>
+            <input id="password" type="password" name="password" value="<?php echo $password ?>" >
           </p>
+          <?php if($_POST){
+            if(isset($noPassword)){
+              ?> <p class="error">debe completar su contrasena</p> <?php
+            }elseif (isset($errorPass)) {
+              ?> <p class="error">la contrasena debe ser mayor o igual a 6</p> <?php
+            }
+          } ?>
           <p class="password">
             <label for="passwordConfirm">
               <b>*</b>Confirme su contrasena
             </label>
             <br>
-            <input id="passwordConfirm" type="password" name="passwordConfirm" value="" required>
+            <input id="passwordConfirm" type="password" name="passwordConfirm" value="<?php echo $passwordConfirm ?>" >
           </p>
+          <?php
+          if($_POST){
+            if(isset($noCoincide)){
+              ?> <p class="error">las contrasenas no coinciden</p> <?php
+            }
+          } ?>
           <p>
             <label for="perfil" >Agrega tu foto de perfil</label><br/>
             <input type="file" name="imagen" id="perfil" value='' maxlength="50" />

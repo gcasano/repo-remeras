@@ -76,7 +76,7 @@ p.coment2{
   }
   div.contenedor{
     width: 100%;
-    height: 600px;
+
     margin-bottom: 30px;
   }
   p.coment2{
@@ -84,7 +84,7 @@ p.coment2{
   }
   div.cuerpo{
     margin-bottom: 30px;
-    height: 500px;
+
     overflow: hidden;
   }
   div.logo{
