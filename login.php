@@ -1,8 +1,15 @@
 <?php
-
+$email = "";
+$password = "";
+if($_POST){
+  $email = $_POST["email"];
+  $password = $_POST["pass"];
+}
 if($_POST && isset($_POST["email"]) == true && isset($_POST["pass"]) == true){
   if (strlen($_POST["email"]) == 0) {
     $noEmail = true;
+  }elseif (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) == false) {
+    $errorEmail = true;
   }
   if (strlen($_POST["pass"]) == 0) {
     $noPassword = true;
@@ -112,11 +119,13 @@ session_start();
                  <b>*</b>Direccion de email
                </label>
                <br>
-               <input id="email" type="email" name="email" value="" >
+               <input id="email" type="email" name="email" value="<?php echo $email ?>" >
              </p>
              <?php if($_POST){
                if(isset($noEmail)){
                  ?> <p class="error">debe completar su email</p> <?php
+               }elseif (isset($errorEmail)) {
+                 ?> <p class="error">email no valido</p> <?php
                }
              } ?>
              <p class="password">
@@ -124,7 +133,7 @@ session_start();
                  <b>*</b>Contrasena
                </label>
                <br>
-               <input id="password" type="password" name="pass" value="">
+               <input id="password" type="password" name="pass" value="<?php echo $password ?>">
              </p>
              <?php if($_POST){
                if(isset($noPassword)){
@@ -209,11 +218,13 @@ session_start();
                          <b>*</b>Direccion de email
                        </label>
                        <br>
-                       <input id="email" type="email" name="email" value="" >
+                       <input id="email" type="email" name="email" value="<?php echo $email ?>" >
                      </p>
                      <?php if($_POST){
                        if(isset($noEmail)){
                          ?> <p class="error">debe completar su email</p> <?php
+                       }elseif (isset($errorEmail)) {
+                         ?> <p class="error">email no valido</p> <?php
                        }
                      } ?>
                      <p class="password">
@@ -221,7 +232,7 @@ session_start();
                          <b>*</b>Contrasena
                        </label>
                        <br>
-                       <input id="password" type="password" name="pass" value="" >
+                       <input id="password" type="password" name="pass" value="<?php echo $password ?>" >
                      </p>
                      <?php if($_POST){
                        if(isset($noPassword)){

@@ -17,6 +17,8 @@ if($_POST){
   }
   if (strlen($_POST["email"]) == 0) {
     $noEmail = true;
+  }elseif (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) == false) {
+    $errorEmail = true;
   }
   if (strlen($_POST["password"]) == 0) {
     $noPassword = true;
@@ -101,6 +103,8 @@ if($_POST && isset($noNombre) == false && isset($noEmail) == false && isset($noP
           <?php if($_POST){
             if(isset($noEmail)){
               ?> <p class="error">debe completar su email</p> <?php
+            }elseif (isset($errorEmail)) {
+              ?> <p class="error">email no valido</p> <?php
             }
           } ?>
           <p class="password">
