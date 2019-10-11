@@ -1,8 +1,17 @@
 <?php
+
+if($_POST && isset($_POST["email"]) == true && isset($_POST["pass"]) == true){
+  if (strlen($_POST["email"]) == 0) {
+    $noEmail = true;
+  }
+  if (strlen($_POST["pass"]) == 0) {
+    $noPassword = true;
+  }
+}
 session_start();
   $baseDatos = file_get_contents("usuarios.json");
   $arrayDatos = json_decode($baseDatos, true);
-  if(isset($_POST["pass"]) && isset($_POST["email"])){
+  if(isset($_POST["pass"]) && isset($_POST["email"]) && isset($noEmail) == false && isset($noPassword) == false){
       foreach ($arrayDatos as $usuario) {
           if($usuario["email"] == $_POST["email"]){
             if(password_verify($_POST["pass"], $usuario["password"])){
@@ -11,6 +20,7 @@ session_start();
               $_SESSION["name"] = $usuario["nombre"];
             }else{
               $_SESSION["logeado"] = false;
+              $passNoCoinciden = true;
             }
           }
       }
@@ -50,6 +60,7 @@ session_start();
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login2.css">
+    <link rel="stylesheet" href="css/login3.css">
   </head>
   <?php include 'header.php'; ?>
   <?php include 'header2.php'; ?>
@@ -66,6 +77,9 @@ session_start();
            ?>
 
            <div class="cuerpo">
+             <div class="logo">
+               <img src="img/logo_copy.jpg" alt="logo">
+             </div>
              <form class="" action="login.php" method="post">
                <label for="email2">ingrese su email</label> <br>
                <input type="email" name="email2" value="" id="email2"> <br>
@@ -98,15 +112,27 @@ session_start();
                  <b>*</b>Direccion de email
                </label>
                <br>
-               <input id="email" type="email" name="email" value="" required>
+               <input id="email" type="email" name="email" value="" >
              </p>
+             <?php if($_POST){
+               if(isset($noEmail)){
+                 ?> <p class="error">debe completar su email</p> <?php
+               }
+             } ?>
              <p class="password">
                <label for="password">
                  <b>*</b>Contrasena
                </label>
                <br>
-               <input id="password" type="password" name="pass" value="" required>
+               <input id="password" type="password" name="pass" value="">
              </p>
+             <?php if($_POST){
+               if(isset($noPassword)){
+                 ?> <p class="error">debe completar su contrasena</p> <?php
+               }elseif (isset($passNoCoinciden)) {
+                 ?> <p class="error">contrasena incorrecta</p> <?php
+               }
+             } ?>
              <p>
                <input type="submit" name="" value="login" class="boton">
              </p>
@@ -148,6 +174,9 @@ session_start();
                  ?>
 
                  <div class="cuerpo">
+                   <div class="logo">
+                     <img src="img/logo_copy.jpg" alt="logo">
+                   </div>
                    <form class="" action="login.php" method="post">
                      <label for="email2">ingrese su email</label> <br>
                      <input type="email" name="email2" value="" id="email2"> <br>
@@ -170,39 +199,49 @@ session_start();
 
                  <?php
                }else{ ?>
-               <div class="cuerpo">
-                 <div class="logo">
-                   <img src="img/logo_copy.jpg" alt="logo">
-                 </div>
-                 <form class="" action="login.php" method="post">
-                   <p class="email">
-                     <label for="email">
-                       <b>*</b>Direccion de email
-                     </label>
-                     <br>
-                     <input id="email" type="email" name="email" value="" required>
-                   </p>
-                   <p class="password">
-                     <label for="password">
-                       <b>*</b>Contrasena
-                     </label>
-                     <br>
-                     <input id="password" type="password" name="pass" value="" required>
-                   </p>
-                   <p>
-                     <input type="submit" name="" value="login" class="boton">
-                   </p>
-                 </form>
-                 <form class="" action="login.php" method="post">
-                   <p>
-                     <label for="olvido">olvido su Contrasena? </label>
-                     <input type="checkbox" id="olvido" name="olvido" value="olvido">
-                     <input type="submit" name="" value="enviar">
-                   </p>
-                 </form>
-
-
-               </div> <?php } ?>
+                 <div class="cuerpo">
+                   <div class="logo">
+                     <img src="img/logo_copy.jpg" alt="logo">
+                   </div>
+                   <form class="" action="login.php" method="post">
+                     <p class="email">
+                       <label for="email">
+                         <b>*</b>Direccion de email
+                       </label>
+                       <br>
+                       <input id="email" type="email" name="email" value="" >
+                     </p>
+                     <?php if($_POST){
+                       if(isset($noEmail)){
+                         ?> <p class="error">debe completar su email</p> <?php
+                       }
+                     } ?>
+                     <p class="password">
+                       <label for="password">
+                         <b>*</b>Contrasena
+                       </label>
+                       <br>
+                       <input id="password" type="password" name="pass" value="" >
+                     </p>
+                     <?php if($_POST){
+                       if(isset($noPassword)){
+                         ?> <p class="error">debe completar su contrasena</p> <?php
+                       }elseif (isset($passNoCoinciden)) {
+                         ?> <p class="error">contrasena incorrecta</p> <?php
+                       }
+                     } ?>
+                     <p>
+                       <input type="submit" name="" value="login" class="boton">
+                     </p>
+                   </form>
+                   <form class="" action="login.php" method="post">
+                     <p>
+                       <label for="olvido">olvido su Contrasena? </label>
+                       <input type="checkbox" id="olvido" name="olvido" value="olvido">
+                       <input type="submit" name="" value="enviar">
+                     </p>
+                   </form>
+                 </div> <?php } ?>
              </div><?php
     }
 
