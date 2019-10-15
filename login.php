@@ -51,11 +51,10 @@ session_start();
     }
 
     if(isset($_POST["pass2"])){
-      foreach ($arrayDatos as $usuario){
+      foreach ($arrayDatos as &$usuario){
         if($usuario["email"] == $_POST["email2"]){
-          $usuario["password"] = $_POST["pass2"];
+          $usuario["password"] = password_hash($_POST["pass2"], PASSWORD_DEFAULT);
           $baseDatos = json_encode($arrayDatos);
-          echo $baseDatos;
           file_put_contents("usuarios.json", $baseDatos);
         }
       }
