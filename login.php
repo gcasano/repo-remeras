@@ -45,11 +45,9 @@ session_start();
       }
     }
   }
-
     if(isset($_POST["olvido"])){
       setcookie("olvidoPass", true, time()+15);
     }
-
     if(isset($_POST["pass2"])){
       foreach ($arrayDatos as &$usuario){
         if($usuario["email"] == $_POST["email2"]){
@@ -59,9 +57,6 @@ session_start();
         }
       }
     }
-
-
-
 
  ?>
 <!DOCTYPE html>
@@ -95,20 +90,9 @@ session_start();
              <form class="" action="login.php" method="post">
                <label for="email2">ingrese su email</label> <br>
                <input type="email" name="email2" value="" id="email2"> <br>
+               <label for="pass2">Cabiar contrasena: </label> <br>
+               <input type="password" name="pass2" value="" id="pass2"> <br>
                <input type="submit" name="" value="enviar"> <br>
-               <?php if(isset($_POST["email2"])){
-                 foreach ($arrayDatos as $usuario){
-                   if($usuario["email"] == $_POST["email2"]){
-                     ?>
-                       <form class="" action="login.php" method="post">
-                         <label for="pass2">Cabiar contrasena: </label> <br>
-                         <input type="password" name="pass2" value="" id="pass2"> <br>
-                         <input type="submit" name="" value="cambiar">
-                       </form>
-                     <?php
-                   }
-                 }
-               } ?>
              </form>
            </div>
 
@@ -200,20 +184,9 @@ session_start();
                    <form class="" action="login.php" method="post">
                      <label for="email2">ingrese su email</label> <br>
                      <input type="email" name="email2" value="" id="email2"> <br>
+                     <label for="pass2">Cabiar contrasena: </label> <br>
+                     <input type="password" name="pass2" value="" id="pass2"> <br>
                      <input type="submit" name="" value="enviar"> <br>
-                     <?php if(isset($_POST["email2"])){
-                       foreach ($arrayDatos as $usuario){
-                         if($usuario["email"] == $_POST["email2"]){
-                           ?>
-                             <form class="" action="login.php" method="post">
-                               <label for="pass2">Cabiar contrasena: </label> <br>
-                               <input type="password" name="pass2" value="" id="pass2"> <br>
-                               <input type="submit" name="" value="cambiar">
-                             </form>
-                           <?php
-                         }
-                       }
-                     } ?>
                    </form>
                  </div>
 
