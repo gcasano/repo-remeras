@@ -32,11 +32,13 @@ if($_POST){
 
 session_start();
 
+
   $baseDatos = file_get_contents("usuarios.json");
   $arrayDatos = json_decode($baseDatos, true);
 if($_POST && isset($noNombre) == false && isset($noEmail) == false && isset($noPassword) == false && isset($noPassConfirm) == false && isset($errorPass) == false && isset($noCoincide) == false){
   if($_POST["password"] == $_POST["passwordConfirm"]){
     $hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $contadorId = count($arrayDatos);
   }else{
     $noCoincide = true;
   }
@@ -44,14 +46,15 @@ if($_POST && isset($noNombre) == false && isset($noEmail) == false && isset($noP
           "nombre" => $_POST["name"],
           "email" => $_POST['email'],
           "password" => $hash,
-          "imagen" => $_FILES["imagen"]["tmp_name"]
+          "imagen" => $_FILES["imagen"]["tmp_name"],
+          "id" => $contadorId
         ];
   $arrayDatos[] = $usuario;
   $baseDatos = json_encode($arrayDatos);
   file_put_contents("usuarios.json", $baseDatos);
 
   if($_FILES){
-    move_uploaded_file($usuario["imagen"], "img/".$usuario["email"].".jpg");
+    move_uploaded_file($usuario["imagen"], "img/".$usuario["id"].".jpg");
   }
 }
 ?>

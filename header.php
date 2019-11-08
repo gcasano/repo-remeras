@@ -1,5 +1,5 @@
 <header class="cabeza">
-    <img src="img/descarga.png" class="img-fluid" alt="Responsive image">
+    <img src="img/descarga.png" class="img-fluid" alt="Responsive image" width="200px" height="200px;">
         <nav class="navbar navbar-dark bg-dark">
           <ul class="nav">
           <li class="nav-item">
@@ -30,12 +30,13 @@
                     if ($_SESSION["logeado"] == true){ ?>
                       <a class="nav-link active" href="perfil.php">hola <?php echo $_SESSION["name"]; ?></a>
               <?php }else {
-                      ?><a class="nav-link active"  href="perfil.php">Mi Perfil</a><?php
+
                     }
                   }else{
-                    ?><a class="nav-link active"  href="perfil.php">Mi Perfil</a><?php
+
                   }?>
           </li>
+
         </ul>
 
 <!-- <form class="form-inline">

@@ -1,23 +1,30 @@
 
 <?php
 session_start();
-//
-// if(isset ($_POST["reiniciar"])){
-// $_SESSION["contador"]=0;
-//
-// }else
-//
-//
-// if ($_POST["incrementar"]){
-// $_SESSION["contador"]++;
-// }
-$_contar=0;
-if($_GET["suma"]="1"){
-$numero=1;
+if(isset($_POST["incrementar"])){
+  $_SESSION["contador"];
 }
-function suma($numero){
-return $_contar=$numero+$_contar ;
+function enviado(&$contador){
+  $sumar = false;
+
+  if(isset($_POST["incrementar"])){
+    $sumar = true;
+    if($sumar == true){
+      $contador = $contador + 1;
+      $sumar = false;
+    }
+  }
+
 }
+function reiniciar(){
+  if(isset($_POST["reiniciar"])){
+    $_SESSION["contador"] = 0;
+  }
+}
+
+enviado($_SESSION["contador"]);
+reiniciar();
+
 ?>
 
 
@@ -41,7 +48,7 @@ return $_contar=$numero+$_contar ;
 <body>
 
 <header class="cabeza">
-    <img src="img/descarga.png" class="img-fluid" alt="Responsive image">
+    <img src="img/descarga.png" class="img-fluid" alt="Responsive image" width="200px" height="200px;">
         <nav class="navbar navbar-dark bg-dark">
           <ul class="nav">
           <li class="nav-item">
@@ -72,12 +79,18 @@ return $_contar=$numero+$_contar ;
                     if ($_SESSION["logeado"] == true){ ?>
                       <a class="nav-link active" href="perfil.php">hola <?php echo $_SESSION["name"]; ?></a>
               <?php }else {
-                      ?><a class="nav-link active"  href="perfil.php">Mi Perfil</a><?php
+
                     }
                   }else{
-                    ?><a class="nav-link active"  href="perfil.php">Mi Perfil</a><?php
+
                   }?>
           </li>
+          <li class="nav-item"> <a class="nav-link active" href="carrito.php"><?php if(isset($_SESSION["contador"])){ echo $_SESSION["contador"];}else {
+            echo 0;
+          } ?></a> </li>
+          <li><form class="" action="home.php" method="post">
+            <input type="submit" name="reiniciar" value="reiniciar">
+          </form>  </li>
         </ul>
 
 
@@ -204,7 +217,7 @@ return $_contar=$numero+$_contar ;
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <a href= "funciones.php?value=img/remeraa1.jpg" class="btn btn-primary">ver más</a>
 
-            <form action="" class="carro" method="post">
+            <form action="" class="carro" method="post" onSubmit="return enviado()">
               <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
             </form>
 
@@ -220,7 +233,7 @@ return $_contar=$numero+$_contar ;
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="funciones.php?value=img/remerab1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post">
+          <form action="" class="carro" method="post" onSubmit="return enviado()">
             <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
           </form>
 
@@ -234,7 +247,7 @@ return $_contar=$numero+$_contar ;
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="funciones.php?value=img/remerac1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post">
+          <form action="" class="carro" method="post" onSubmit="return enviado()">
             <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
           </form>
         </div>
@@ -247,7 +260,7 @@ return $_contar=$numero+$_contar ;
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="funciones.php?value=img/remerad1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post">
+          <form action="" class="carro" method="post" onSubmit="return enviado()">
             <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
           </form>
         </div>
@@ -260,7 +273,7 @@ return $_contar=$numero+$_contar ;
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="funciones.php?value=img/remerae1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post">
+          <form action="" class="carro" method="post" onSubmit="return enviado()">
             <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
           </form>
         </div>
@@ -272,7 +285,7 @@ return $_contar=$numero+$_contar ;
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="funciones.php?value=img/remeraf1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post">
+          <form action="" class="carro" method="post" onSubmit="return enviado()">
             <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
           </form>
         </div>
@@ -284,7 +297,7 @@ return $_contar=$numero+$_contar ;
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="funciones.php?value=img/remerag1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post">
+          <form action="" class="carro" method="post" onSubmit="return enviado()">
             <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
           </form>
         </div>
@@ -297,7 +310,7 @@ return $_contar=$numero+$_contar ;
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <a href="funciones.php?value=img/remerah1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post">
+          <form action="" class="carro" method="post" onSubmit="return enviado()">
             <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
           </form>
         </div>

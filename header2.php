@@ -22,10 +22,10 @@
                         if ($_SESSION["logeado"] == true){ ?>
                             <a href="perfil.php"><?php echo $_SESSION["name"]; ?></a>
                   <?php }else {
-                                  ?><a href="perfil.php">Perfil</a><?php
+
                               }
                       }else{
-                              ?><a href="perfil.php">Perfil</a><?php
+                              
                             }?></li>
           </ul>
         </span>

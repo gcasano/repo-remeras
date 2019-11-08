@@ -45,8 +45,9 @@ session_start();
       }
     }
   }
+  $olvido = false;
     if(isset($_POST["olvido"])){
-      setcookie("olvidoPass", true, time()+15);
+      $olvido = true;
     }
     if(isset($_POST["pass2"])){
       foreach ($arrayDatos as &$usuario){
@@ -56,6 +57,7 @@ session_start();
           file_put_contents("usuarios.json", $baseDatos);
         }
       }
+      $olvido = false;
     }
 
  ?>
@@ -80,7 +82,7 @@ session_start();
            <p class="coment">si tienes una cuenta registrada,</p>
            <p class="coment2">ingresa tus datos:</p>
          </div>
-         <?php if(isset($_COOKIE["olvidoPass"])){
+         <?php if($olvido == true){
            ?>
 
            <div class="cuerpo">
@@ -144,8 +146,7 @@ session_start();
            <form class="" action="login.php" method="post">
              <p>
                <label for="olvido">olvido su Contrasena? </label>
-               <input type="checkbox" id="olvido" name="olvido" value="olvido">
-               <input type="submit" name="" value="enviar">
+               <input type="submit" name="olvido" value="cambiar">
              </p>
            </form>
          </div> <?php } ?>
@@ -174,7 +175,7 @@ session_start();
                  <p class="coment">si tienes una cuenta registrada,</p>
                  <p class="coment2">ingresa tus datos:</p>
                </div>
-               <?php if(isset($_COOKIE["olvidoPass"])){
+               <?php if($olvido == true){
                  ?>
 
                  <div class="cuerpo">
@@ -238,8 +239,7 @@ session_start();
                    <form class="" action="login.php" method="post">
                      <p>
                        <label for="olvido">olvido su Contrasena? </label>
-                       <input type="checkbox" id="olvido" name="olvido" value="olvido">
-                       <input type="submit" name="" value="enviar">
+                       <input type="submit" name="olvido" value="cambiar">
                      </p>
                    </form>
                  </div> <?php } ?>
