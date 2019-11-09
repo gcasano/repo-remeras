@@ -1,10 +1,3 @@
-
-<?php
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -155,6 +148,10 @@
     <h5 class="mt-0">Descripción</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
     <a class="btn btn-dark" href="home.php" role="button">Volver</a>
+    <form class="" action="carrito.php" method="post">
+      <button class="btn btn-dark" type="submit" name="incrementar" value="<?php echo $_GET["value"];?>" >comprar</button>
+    </form>
+
   </div>
 </div>
 

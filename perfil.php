@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$page = $_SERVER['PHP_SELF'];
-$sec = "0.01";
+/* $page = $_SERVER['PHP_SELF'];
+$sec = "0.01";*/
 
 
   $baseDatos = file_get_contents("usuarios.json");

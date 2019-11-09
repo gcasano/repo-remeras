@@ -1,4 +1,30 @@
 <?php session_start();
+
+if(isset($_POST["incrementar"])){
+  $_SESSION["contador"];
+}
+function enviado(&$contador){
+  $sumar = false;
+
+  if(isset($_POST["incrementar"])){
+    $sumar = true;
+    if($sumar == true){
+      $contador = $contador + 1;
+      $sumar = false;
+    }
+  }
+
+}
+function reiniciar(){
+  if(isset($_POST["reiniciar"])){
+    $_SESSION["contador"] = 0;
+  }
+}
+
+enviado($_SESSION["contador"]);
+reiniciar();
+
+
 $baseDatos = file_get_contents("usuarios.json");
 $arrayDatos = json_decode($baseDatos, true); ?>
 <!DOCTYPE html>
@@ -6,9 +32,13 @@ $arrayDatos = json_decode($baseDatos, true); ?>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link rel="stylesheet" href="css/carrito.css">
     <script src="https://kit.fontawesome.com/11b69fdd61.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/carro2.css">
-    <link rel="stylesheet" href="css/carro.css">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Carro</title>
   </head>
@@ -39,8 +69,10 @@ $arrayDatos = json_decode($baseDatos, true); ?>
          ?>
       </div>
       <div class="perfil">
-        <?php if(isset($_SESSION["logeado"]) == false){
+        <?php if(isset($_SESSION["logeado"]) == false || $_SESSION["logeado"] == false){
           ?> <p>debe iniciar sesion</p> <?php
+          ?><a class="btn btn-dark" href="home.php" role="button">Volver</a><?php
+          ?><a class="btn btn-dark" href="login.php" role="button">Login</a><?php
         }else{ ?>
         <div class="logo">
           <?php
@@ -53,7 +85,10 @@ $arrayDatos = json_decode($baseDatos, true); ?>
         </div>
         <p>perfil de</p>
         <h5><?php  echo $_SESSION["name"]; ?></h5>
+        <a class="btn btn-dark" href="home.php" role="button">Volver</a>
+        <button class="btn btn-dark" type="button" name="comprar" value="comprar" >comprar</button>
       <?php } ?>
+
       </div>
 
       </div>
