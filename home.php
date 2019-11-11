@@ -1,6 +1,42 @@
 
 <?php
 session_start();
+
+$page = $_SERVER['PHP_SELF'];
+$sec = "0.01";
+
+include_once "producto.php";
+if(isset($_POST["eliminar"])){
+  $baseDatosProducto = file_get_contents("producto.json");
+  $arrayProductos = json_decode($baseDatosProducto, true);
+    foreach ($arrayProductos as &$producto){
+      foreach ($producto as $valor){
+        if($valor["nombre"] == $_POST["eliminar"]){
+          unset($producto[$_POST["eliminar"]]);
+          $baseDatosProducto = json_encode($arrayProductos);
+          file_put_contents("producto.json", $baseDatosProducto);
+          echo "se elimino un producto";
+          echo "<br>";
+        }
+      }
+    }
+  }
+
+if(isset($_POST["incrementar"])){
+  $baseDatosProducto = file_get_contents("producto.json");
+  $arrayProductos = json_decode($baseDatosProducto, true);
+  foreach ($arrayProductos as &$producto){
+    foreach ($producto as $valor){
+      if($valor["nombre"] == $_POST["incrementar"]){
+
+        $_SESSION["arrayCarrito"][] = $producto;
+
+      }
+    }
+  }
+}
+
+
 if(isset($_POST["incrementar"])){
   $_SESSION["contador"];
 }
@@ -19,6 +55,8 @@ function enviado(&$contador){
 function reiniciar(){
   if(isset($_POST["reiniciar"])){
     $_SESSION["contador"] = 0;
+    $_SESSION["arrayCarrito"] = [];
+
   }
 }
 
@@ -36,6 +74,12 @@ reiniciar();
   <meta charset="utf-8">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php   if(isset($_POST["eliminar"])){
+  ?><meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'"><?php
+}   ?>
+<?php   if(isset($_POST["incrementar"])){
+  ?><meta http-equiv="refresh" content="<?php echo $sec?>;URL='<?php echo $page?>'"><?php
+}   ?>
 <script src="https://kit.fontawesome.com/11b69fdd61.js" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="css/style.css">
@@ -48,7 +92,7 @@ reiniciar();
 <body>
 
 <header class="cabeza">
-    <img src="img/descarga.png" class="img-fluid" alt="Responsive image" width="200px" height="200px;">
+    <img src="img/portada.JPG"  width="100%" height="200px;">
         <nav class="navbar navbar-dark bg-dark">
           <ul class="nav">
           <li class="nav-item">
@@ -85,11 +129,11 @@ reiniciar();
 
                   }?>
           </li>
-          <li class="nav-item"> <a class="nav-link active" href="carrito.php"><?php if(isset($_SESSION["contador"])){ echo $_SESSION["contador"];}else {
-            echo 0;
+          <li class="nav-item"> <a class="nav-link active" href="carrito.php"><?php if(isset($_SESSION["contador"])){ echo "tu carrito tiene ".$_SESSION["contador"]." productos";}else {
+            echo "tu carrito esta vacio";
           } ?></a> </li>
           <li><form class="" action="home.php" method="post">
-            <input type="submit" name="reiniciar" value="reiniciar">
+            <input type="submit" name="reiniciar" value="reiniciar"class="btn btn-primary" >
           </form>  </li>
         </ul>
 
@@ -105,10 +149,9 @@ reiniciar();
 
 </header>
 <?php include 'header2.php'; ?>
+
 <div>
 <main class="contenedor">
-
-
 
 <nav class="botones">
 
@@ -209,112 +252,35 @@ reiniciar();
 
 <section class="foto">
 
-          <div class="card" >
-          <img src="img/remeraa1.jpg" class="card-img-top" alt="..." data-remera="remeraa1">
-          <img class="special" src="img/img-nuevo.png" alt="plato nuevo">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href= "funciones.php?value=img/remeraa1.jpg" class="btn btn-primary">ver más</a>
+  <?php
 
-            <form action="" class="carro" method="post" onSubmit="return enviado()">
-              <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
-            </form>
-
-
-
-          </div>
-          </div>
-
+    foreach ($arrayProductos as $producto){
+      foreach ($producto as $valor){
+        ?>
         <div class="card" >
-        <img src="img/remerab1.jpg" class="card-img-top" alt="...">
+        <img src="img/productos/<?php echo $valor["nombre"];?>.jpg" class="card-img-top" alt="" width="242px" height="185px;" data-remera="remeraa1">
         <img class="special" src="img/img-nuevo.png" alt="plato nuevo">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="funciones.php?value=img/remerab1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post" onSubmit="return enviado()">
-            <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
+          <h5 class="card-title"><?php echo $valor["nombre"]; ?></h5>
+          <h6 class="card-text"><?php echo $valor["precio"]; ?></h6>
+          <form class="" action="funciones.php" method="post">
+              <button type="submit" name="incrementar" value="<?php echo $valor["nombre"]; ?>" class="btn btn-primary">ver mas</button>
           </form>
-
-
-        </div>
-        </div>
-
-        <div class="card" >
-        <img src="img/remerac1.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="funciones.php?value=img/remerac1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post" onSubmit="return enviado()">
-            <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
+          <form action="home.php" class="carro" method="post" onSubmit="return enviado()">
+            <button type="submit" name="incrementar" value="<?php echo $valor["nombre"]; ?>" class="btn btn-primary fas fa-cart-plus"></button>
+          </form>
+          <form action="home.php" class="eliminar" method="post">
+            <button type="submit" name="eliminar" value="<?php echo $valor["nombre"]; ?>" class="btn">eliminar</button>
           </form>
         </div>
         </div>
+        <?php
+      }
+    } ?>
 
-        <div class="card" >
-        <img src="img/remerad1.jpg" class="card-img-top" alt="...">
-        <img class="special" src="img/img-nuevo.png" alt="plato nuevo">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="funciones.php?value=img/remerad1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post" onSubmit="return enviado()">
-            <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
-          </form>
-        </div>
-        </div>
 
-        <div class="card" >
-        <img src="img/remerae1.jpg" class="card-img-top" alt="...">
-        <img class="special" src="img/img-descuento.png" alt="descuento efectivo">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="funciones.php?value=img/remerae1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post" onSubmit="return enviado()">
-            <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
-          </form>
-        </div>
-        </div>
 
-        <div class="card" >
-        <img src="img/remeraf1.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="funciones.php?value=img/remeraf1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post" onSubmit="return enviado()">
-            <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
-          </form>
-        </div>
-        </div>
 
-        <div class="card" >
-        <img src="img/remerag1.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="funciones.php?value=img/remerag1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post" onSubmit="return enviado()">
-            <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
-          </form>
-        </div>
-        </div>
-
-        <div class="card" >
-        <img src="img/remerah1.jpg" class="card-img-top" alt="...">
-        <img class="special" src="img/img-descuento.png" alt="descuento efectivo">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="funciones.php?value=img/remerah1.jpg" class="btn btn-primary">ver más</a>
-          <form action="" class="carro" method="post" onSubmit="return enviado()">
-            <button type="submit" name="incrementar" value="Incrementar" class="btn btn-primary fas fa-cart-plus"></button>
-          </form>
-        </div>
-        </div>
 </section>
 </div>
 </main>

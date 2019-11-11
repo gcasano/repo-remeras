@@ -1,5 +1,5 @@
 <header class="cabeza">
-    <img src="img/descarga.png" class="img-fluid" alt="Responsive image" width="200px" height="200px;">
+    <img src="img/portada.JPG"  width="100%" height="200px;">
         <nav class="navbar navbar-dark bg-dark">
           <ul class="nav">
           <li class="nav-item">

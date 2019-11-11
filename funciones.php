@@ -117,6 +117,13 @@
 
 <div class="row no-gutters bg-light position-relative">
   <div class="col-md-6 mb-md-0 p-md-4">
+<?php      $baseDatosProducto = file_get_contents("producto.json");
+    $arrayProductos = json_decode($baseDatosProducto, true);
+      foreach ($arrayProductos as $producto){
+        foreach ($producto as $valor){
+          if($valor["nombre"] == $_POST["incrementar"]){
+          ?>
+
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -125,13 +132,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="<?php echo $_GET["value"];?>" class="d-block w-100" alt="...">
+      <img src="img/productos/<?php echo $valor["nombre"];?>.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="<?php echo $_GET["value"];?>" class="d-block w-100" alt="...">
+      <img src="img/productos/<?php echo $valor["nombre"];?>.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="<?php echo $_GET["value"];?>" class="d-block w-100" alt="...">
+      <img src="img/productos/<?php echo $valor["nombre"];?>.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -143,14 +150,28 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
   </div>
   <div class="col-md-6 position-static p-4 pl-md-0">
+    <h2><?php echo $valor["nombre"]; ?></h2>
     <h5 class="mt-0">Descripción</h5>
-    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    <p><?php echo $valor["detalle"]; ?></p>
+    <h3><?php echo $valor["precio"]; ?></h3>
+
+    <?php } } } ?>
     <a class="btn btn-dark" href="home.php" role="button">Volver</a>
-    <form class="" action="carrito.php" method="post">
-      <button class="btn btn-dark" type="submit" name="incrementar" value="<?php echo $_GET["value"];?>" >comprar</button>
+    <?php
+    $baseDatosProducto = file_get_contents("producto.json");
+    $arrayProductos = json_decode($baseDatosProducto, true);
+      foreach ($arrayProductos as $producto){
+        foreach ($producto as $valor){
+          if($valor["nombre"] == $_POST["incrementar"]){
+          ?>
+    <form action="carrito.php"  method="post">
+      <button type="submit" class="btn btn-dark" name="incrementar" value="<?php echo $valor["nombre"]; ?>">comprar</button>
     </form>
+  <?php } } } ?>
+
 
   </div>
 </div>
@@ -158,7 +179,7 @@
 </div>
 </main>
 
-<?php include("footer.php") ?>
+<?php include("footer.php"); ?>
 
 
 

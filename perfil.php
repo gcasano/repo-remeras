@@ -150,6 +150,11 @@ foreach ($arrayDatos as &$usuario){
                     <input type="submit" name="update" value="update">
 
                 </form>
+                <form  action="vender.php" method="post">
+
+                    <input type="submit" name="crearproducto" value="crear producto">
+
+                </form>
                 </h5>
                 <?php
 
