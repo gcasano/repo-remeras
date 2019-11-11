@@ -1,0 +1,106 @@
+
+
+.carro{
+  background-color: #E0DFDE;
+}
+
+
+
+ul.navbar li a{
+  color: white;
+  font-size: 13px;
+}
+
+
+ul.nav li a{
+  color: white;
+}
+.cuerpo {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    left: 0%;
+}
+.compras {
+    width: 100%;
+    float: left;
+}
+.compra{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: white;
+  display: block;
+  margin-top: 40px;
+  margin-right: 0px;
+
+}
+.texto{
+  position: relative;
+  float: left;
+  padding-left: 40px;
+  padding-top: 20px;
+
+}
+.imagen{
+  position: relative;
+  margin-left: 271px;
+}
+.perfil{
+  display: none;
+  background-color: white;
+  width: 350px;
+  height: 600px;
+  margin-top: 40px;
+  margin-left: 40px;
+  padding-left: 15px;
+  padding-top: 15px;
+  float: left;
+  box-sizing: border-box;
+}
+
+.logo img{
+  border-radius: 100%;
+}
+@media only screen and (min-width: 1024px){
+  .perfil{
+    display: block;
+    background-color: white;
+    width: 350px;
+    height: 600px;
+    margin-top: 40px;
+    margin-left: 40px;
+    padding-left: 15px;
+    padding-top: 15px;
+    float: left;
+    box-sizing: border-box;
+  }
+  .compras {
+      width: 58%;
+      float: left;
+  }
+  .imagen{
+    position: relative;
+    margin-left: 450px;
+  }
+  .cuerpo {
+      position: relative;
+      width: 66%;
+      margin: 0 auto;
+      overflow: hidden;
+      left: 0%;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .cuerpo {
+      position: relative;
+      width: 48%;
+      margin: 0 auto;
+      overflow: hidden;
+      left: 0%;
+  }
+}

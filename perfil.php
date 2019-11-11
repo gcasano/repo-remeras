@@ -39,7 +39,7 @@ $update = false;
 }
 }
 
-if(isset($_POST["usuario2"])){
+if(isset($_POST["email2"])){
   if($_POST["email2"] == ""){
 
   }else{
@@ -56,7 +56,7 @@ foreach ($arrayDatos as &$usuario){
 }
 
 
-if(isset($_POST["usuario2"])){
+if(isset($_POST["contrasena2"])){
   if($_POST["contrasena2"] == ""){
 
   }else{
@@ -69,7 +69,16 @@ foreach ($arrayDatos as &$usuario){
 }
 }
 }
-
+if(isset($_FILES["imagen2"])){
+foreach ($arrayDatos as &$usuario){
+  if($usuario["email"] == $_SESSION["email"]){
+    $usuario["imagen"] = $_FILES["imagen2"]["tmp_name"];
+    $baseDatos = json_encode($arrayDatos);
+    file_put_contents("usuarios.json", $baseDatos);
+    move_uploaded_file($usuario["imagen"], "img/".$usuario["id"].".jpg");
+  }
+}
+}
 
 
  ?>
@@ -149,7 +158,7 @@ foreach ($arrayDatos as &$usuario){
           </div>
         <?php }elseif($update == true){
           ?>    <div class="usuario">
-                  <form class="update" action="perfil.php" method="post">
+                  <form class="update" action="perfil.php" method="post" enctype="multipart/form-data">
                         <p>
                           <label for="usuario2">nombre</label><br>
                           <h5><input type="text" name="usuario2" id="usuario2" value=""></h5>
@@ -161,6 +170,10 @@ foreach ($arrayDatos as &$usuario){
                         <p>
                           <label for="contrasena2">contrasena</label><br>
                           <h5><input type="password" name="contrasena2" id="contrasena2" value=""></h5>
+                        </p>
+                        <p>
+
+                          <h5> <input type="file" id="imagen2" name="imagen2" value='' maxlength="50" /></h5>
                         </p>
                         <h5>
                           <input type="submit" name="update2" value="update">
